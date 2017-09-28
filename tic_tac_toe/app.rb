@@ -1,3 +1,8 @@
+class TicTacToe
+
+end
+
+
 def display_board(board)
   puts "#{board[0]}|#{board[1]}|#{board[2]}"
   puts "-----------"
@@ -18,7 +23,7 @@ def turn(board)
 		display_board(board)
 	else 
 		puts "Sorry that is not possible SON!"
-		turn(board)
+		turn(board)  #creates a recursion loop that forces user to satisfy valid_move? as 'true' before resolving
 	end 
 end 
 
@@ -34,26 +39,31 @@ end
 
 
 def position_taken?(board, index)
-	if board[index] == ("   " || "" || nil)
-		false
-	else 
-		true 
+	board[index] == ("   " || "" || nil)? false : true 
+end 
+
+def play(board)
+	puts "Welcome to Tic Tac Toe!"
+	display_board(board)
+	turnCount = 0
+	while (turnCount < 9)
+		turn(board)
+		turnCount += 1 
 	end 
 end 
 
 
+
 #everything under this is CLI "lib" run 
 
-puts "Welcome to Tic Tac Toe!"
+#puts "Welcome to Tic Tac Toe!"
 
 board = ["   ", "   ", "   ", "   ", "   ", "   ", "   ", "   ", "   "]
 
-display_board(board)
-
-turn(board)
-
-#move(board, input, " X ")
+play(board)
 
 #display_board(board)
+
+#turn(board)
 
 
